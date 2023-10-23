@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="col-12">
+        <div class="formulario">
+            <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+                <div class="element">
+                    <table>
+                        <tr>
+                            <th class= "return" colspan="2"><a routerLink="/user" href="">Inicio</a></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Registro</th>
+                        </tr>
+                        <tr>
+                            <td class="column1 required"><label for="name">Nombre:</label></td>
+                            <td><input  formControlName = "horseName" class = "elemChild" type="text" required id="name"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1"><label for="age">Edad:</label></td>
+                            <td><input formControlName="horseAge" class = "elemChild" type="number" min="1" max="30" id="age"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1 required"><label for="breed">Raza:</label></td>
+                            <td><input formControlName="horseBreed" type="text" class = "elemChild" min="1" max="30" required id="breed"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1 required"><label for="sex">Sexo:</label></td>
+                            <td>
+                                <select formControlName="horseGender" name="sexo" class = "elemChild" id="sex" size="1" required>
+                                    <option *ngFor = "let element of gender" [value] = "element.id">{{element.description}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="column1"><label for="reg">Registro:</label></td>
+                            <td><input formControlName="horseRegNum" class = "elemChild" type="text" id="reg"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1"><label for="mic">Microchip:</label></td>
+                            <td><input formControlName="horseMicro" class = "elemChild" type="text" id="mic"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1 required"><label for="act">Actividad:</label></td>
+                            <td><select formControlName="horseActivity" name="actividad" class = "elemChild" id="act" size="1">
+                                <option *ngFor="let element of activity" [value] = "element.id">{{element.description}}</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button type="submit" [disabled]="!regForm.valid">Registrar</button></td>
+                        </tr>                    
+                    </table>
+                </div>
+                <!-- <div class="element">
+                    <label>Foto de Caballo</label>
+                    <input type="file">
+                </div> -->
+                
+            </form>
+        </div>
+        
+
+
+    </div>
+
+</div>
+
+

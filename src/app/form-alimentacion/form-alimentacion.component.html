@@ -1,0 +1,35 @@
+<a href="/forms/{{idHorse}}/{{nameHorse}}">Forms</a>
+<h1>Alimentacion - {{nameHorse}}</h1>
+<form [formGroup]="formsAlim" (ngSubmit)="onSubmit()">
+    <div class="contForm">
+        <label class = "dateLabel" for="">Hora:</label>
+        <input type="time" formControlName = "hora">
+    </div>
+    <div formGroupName = subFormAlim>
+        <div class="contForm" formGroupName = 'Alimento'>
+            <h2>Alimento</h2><br>
+            <label class = "dateLabel">
+                <input type="text" formControlName = 'cantidadAlimento'>
+                Kg. de 
+                <input type="text" formControlName = 'tipoAlimento'>
+            </label>
+        </div>
+        <div class="contForm" formGroupName = 'Pasto'>
+            <h2>Pasto</h2><br>
+            <label class = "dateLabel">
+                <input type="text" formControlName = 'cantidadPasto'>
+                Kg. de pasto
+                <input type="text" formControlName = 'tipoPasto'>
+            </label>
+        </div>
+        <div class="contForm" formGroupName = 'Suplementos'>
+            <label class = "dateLabel">Suplementos:</label>
+            <div>
+                <textarea name="" id="" cols="30" rows="10" formControlName = 'textoSuplementos'></textarea>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button class="btnForm" type="submit" [disabled]="!formsAlim.valid">Registrar</button>
+    </div>
+</form>

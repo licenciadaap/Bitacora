@@ -1,0 +1,21 @@
+<a href="/forms/{{idHorse}}/{{nameHorse}}">Forms</a>
+<h1>Herraje - {{nameHorse}}</h1>
+<form [formGroup]="formHerraje" (ngSubmit)="onSubmit()">
+    <div class="contForm">
+        <label class="dateLabel" for="">Tipo de Herraje:</label>
+        <input type="text" formControlName="tipoHerraje">
+    </div>
+    <div class="contForm">
+        <label class="dateLabel" for="">Fecha de Herraje:</label>
+        <input type="date" formControlName="fechaHerraje">
+    </div>
+    <div class="contForm">
+        <label for="obs">Observaciones</label>
+        <div>
+            <textarea formControlName="observaciones" id="obs" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    <div>
+        <button class="btnForm" type="submit" [disabled]="!formHerraje.valid">Registrar</button>
+    </div>
+</form>

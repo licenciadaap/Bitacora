@@ -1,0 +1,229 @@
+<h1>Bitácora - {{horseName}}</h1>
+<div>
+    <button type="button" class="collapsible">QR</button>
+    <div class="content">
+        <div class="qrCode">
+            <qrcode class="qr" (qrCodeURL)="onCodeChange($event)" [width]="200" [qrdata]="urlSelect"></qrcode>
+            <a class="download" [href]="url" [download] = "qrName">Descargar QR</a>
+        </div>
+    </div>
+</div>
+<div>
+    <button type="button" class="collapsible">Peso</button>
+    <div class="content">
+        <table class="tableForm" *ngIf="bitPesoInfo async">
+            <tr >
+                <th>Peso</th>
+                <th>Última fecha de peso</th>
+            </tr>
+            <tr *ngFor="let element of bitPeso">
+                <td>{{element.peso}} Kg.</td>
+                <td>{{element.fecha_peso| date: 'dd-MM-yyyy'}}</td>
+            </tr>
+        </table>
+        <table class="tableForm" *ngIf="!bitPesoInfo async">
+            <tr >
+                <th>Peso</th>
+                <th>Última fecha de peso</th>
+            </tr>
+            <tr >
+                <td colspan="2"> Aún no hay información de peso para {{horseName}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <button type="button" class="collapsible">Alimentación</button>
+    <div class="content">
+        <table class="tableForm" *ngIf="bitAlimentacionInfo async">
+            <tr >
+                <th>Hora</th>
+                <th>Alimento</th>
+                <th>Pasto</th>
+                <th>Suplementos</th>
+            </tr>
+            <tr *ngFor="let element of bitAlimentacion">
+                <td>{{element.hora| slice: 0:-3}}</td>
+
+                <td *ngIf="element.cantidad_alimento !== '0.00'">{{element.cantidad_alimento}} Kg. de {{element.tipo_alimento}}.</td>
+                <td *ngIf="element.cantidad_alimento === '0.00'">-</td>
+
+                <td *ngIf="element.cantidad_pasto !== '0.00'">{{element.cantidad_pasto}} Kg. de {{element.tipo_pasto}}.</td>
+                <td *ngIf="element.cantidad_pasto === '0.00'">-</td>
+
+                <td *ngIf="element.suplementos !== ''">{{element.suplementos}}.</td>
+                <td *ngIf="element.suplementos === ''">-</td>
+            </tr>
+        </table>
+        <table class="tableForm" *ngIf="!bitAlimentacionInfo async">
+            <tr >
+                <th>Hora</th>
+                <th>Alimento</th>
+                <th>Pasto</th>
+                <th>Suplementos</th>
+            </tr>
+            <tr >
+                <td colspan="4"> Aún no hay información de alimentación para {{horseName}}</td>
+            </tr>
+        </table>
+        <table class="tableForm">
+            <tr>
+                <th>Total Alimento</th>
+                <th>Total Pasto</th>
+            </tr>
+            <tr>
+                <td>{{totalAlimento}} Kg.</td>
+                <td>{{totalPasto}} Kg.</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <button type="button" class="collapsible">Hidratación</button>
+    <div class="content">
+        <table class="tableForm" *ngIf="bitHidratacionInfo async">
+            <tr >
+                <th>Cubeta 1</th>
+                <th>Cubeta 2</th>
+                <th>Total Bebidos</th>
+                <th>Fecha</th>
+            </tr>
+            <tr *ngFor="let element of bitHidratacion">
+                <td>{{element.litros_cubeta_1}} Lt.</td>
+                <td>{{element.litros_cubeta_2}} Lt.</td>
+                <td>{{element.litros_bebidos}} Lt.</td>
+                <td>{{element.fecha| date: 'dd-MM-yyyy'}}</td>
+            </tr>
+        </table>
+        <table class="tableForm" *ngIf="!bitHidratacionInfo async">
+            <tr >
+                <th>Peso</th>
+                <th>Última fecha de peso</th>
+            </tr>
+            <tr >
+                <td colspan="2"> Aún no hay información de hidratación para {{horseName}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <button type="button" class="collapsible">Herraje</button>
+    <div class="content">
+        <table class="tableForm" *ngIf="bitHerrajeInfo">
+            <tr >
+                <th>Tipo de Herraje</th>
+                <th>Última fecha de herraje</th>
+                <th>Observaciones</th>
+            </tr>
+            <tr >
+                <td>{{bitHerraje[0].tipo_herraje}}</td>
+                <td>{{bitHerraje[0].fecha_herraje| date: 'dd-MM-yyyy'}}</td>
+                <td>{{bitHerraje[0].observaciones}}</td>
+            </tr>
+        </table>
+        <table class="tableForm" *ngIf="!bitHerrajeInfo">
+            <tr >
+                <th>Tipo de Herraje</th>
+                <th>Última fecha de herraje</th>
+                <th>Observaciones</th>
+            </tr>
+            <tr >
+                <td colspan="3">Aún no hay información de herraje para {{horseName}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <button type="button" class="collapsible">Pista</button>
+    <div class="content">
+        <table class="tableForm" *ngIf="bitPistaInfo">
+            <tr >
+                <th>Trabajo en Pista</th>
+                <th>Jinete</th>
+                <th>Observaciones</th>
+            </tr>
+            <tr *ngFor="let element of bitPista">
+                <td>{{element.trabajo_en_pista}}</td>
+                <td>{{element.jinete}}</td>
+                <td>{{element.observaciones}}</td>
+            </tr>
+        </table>
+        <table class="tableForm" *ngIf="!bitPistaInfo">
+            <tr >
+                <th>Trabajo en Pista</th>
+                <th>Jinete</th>
+                <th>Observaciones</th>
+            </tr>
+            <tr >
+                <td colspan="3">Aún no hay información de Pista para {{horseName}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <button type="button" class="collapsible">Veterinario</button>
+    <div class="content">
+        <table class="tableForm" *ngIf="bitVetInfo">
+            <tr >
+                <th>Fecha de Visita</th>
+                <th>Motivo de Visita</th>
+                <th>Diagnóstico</th>
+                <th>Tratamiento</th>
+            </tr>
+            <tr *ngFor="let element of bitVet">
+                <td>{{element.fecha_visita_vet | date: 'dd-MM-yyyy'}}</td>
+                <td>{{element.razon_visita_vet}}</td>
+                <td>{{element.diagnostico}}</td>
+                <td>{{element.tratamiento}}</td>
+            </tr>
+        </table>
+        <table class="tableForm" *ngIf="!bitVetInfo">
+            <tr >
+                <th>Fecha de Visita</th>
+                <th>Motivo de Visita</th>
+                <th>Diagnóstico</th>
+                <th>Tratamiento</th>
+            </tr>
+            <tr >
+                <td colspan="4">Aún no hay información de Veterinario para {{horseName}}</td>
+            </tr>
+        </table>
+        
+    </div>
+</div>
+<div>
+    <button type="button" class="collapsible">Resultados</button>
+    <div class="content">
+        <table class="tableForm" *ngIf="bitResultadosInfo">
+            <tr >
+                <th>Sede</th>
+                <th>Fecha de Competencia</th>
+                <th>Tipo de Competencia</th>
+                <th>Observaciones</th>
+                <th>Resultados</th>
+            </tr>
+            <tr *ngFor="let element of bitResultados">
+                <td>{{element.sede}}</td>
+                <td>{{element.fecha_competencia | date: 'dd-MM-yyyy'}}</td>
+                <td>{{element.tipo_competencia}}</td>
+                <td>{{element.observaciones}}</td>
+                <td><button class="eye" mat-raised-button (click)="openDialog(element.id,element.id_competencia)"><img id="eyeIcon" src="/assets/ver.png" alt=""></button></td>
+            </tr>
+        </table>
+        <table class="tableForm" *ngIf="!bitResultadosInfo">
+            <tr >
+                <th>Sede</th>
+                <th>Fecha de Competencia</th>
+                <th>Tipo de Competencia</th>
+                <th>Observaciones</th>
+                <th>Resultados</th>
+            </tr>
+            <tr >
+                <td colspan="5">Aún no hay información de Resultados para {{horseName}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="btns">
+    <button class="btnForm" (click)="goToMenu()">Regresar a Inicio</button>
+</div>

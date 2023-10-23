@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="content">
+        <h2>QR {{horseName}}</h2>
+        <qrcode class="qr" (qrCodeURL)="onCodeChange($event)" [width]="200" [qrdata]="urlSelect"></qrcode>
+        <p>Descarga y escanea este QR para recopilar información de {{horseName}}.</p>
+        <a class="download" [href]="url" [download] = "qrName">Descargar QR</a>
+    </div>
+    <div class="btns">
+        <button (click)="goToMenu()">Regresar a Inicio</button>
+        <button (click)="goToRegister()">Registrar otro Caballo</button>
+    </div>
+</div>

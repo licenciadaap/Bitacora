@@ -1,0 +1,36 @@
+.container {
+    height: 100vh;
+    text-align: center;
+    min-height: 465px;
+    overflow: auto;
+}
+
+.content{
+    padding: 1rem;
+}
+
+
+p {
+    padding: 1rem;
+    color: rgb(55, 55, 55);
+}
+
+.download{
+    padding: 0.5rem;
+    margin: 2rem;
+}
+
+
+.btns{
+    position: relative;
+    width: 100%;
+}
+
+.btns button{
+    border: 0.5px solid grey;
+    padding: 0.3rem;
+    margin: 0.3rem;
+    border-radius: 15px;
+    background-color: rgba(56, 21, 7, 0.765);
+    color: white;
+}

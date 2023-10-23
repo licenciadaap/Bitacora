@@ -1,0 +1,69 @@
+<a href="/forms/{{idHorse}}/{{nameHorse}}">Forms</a>
+<h1>Pista - {{nameHorse}}</h1>
+<form [formGroup]="formPista" (ngSubmit)="onSubmit()">
+    <div class="contForm">
+        <p>Seleccione la opción que describa mejor el trabajo en pista:</p>
+    </div>
+    <div class="contForm">
+        <label for="opt1">
+            <table>
+                <tr>
+                    <td>
+                        <input id = "opt1" type="radio" value = "1" formControlName="trabajoEnPista">
+                    </td>
+                    <td>
+                        <li>Trabajo muy ligero, casi de descanso sólo para mover al caballo.</li>
+                        <li>El caballo no se agitó ni sudó.</li>
+                        <li>No es necesario ningún cuidado post-entrenamiento.</li>
+                    </td>
+                </tr>
+            </table>
+        </label>
+    </div>
+    <div class="contForm">
+        <label for="opt2">
+            <table>
+                <tr>
+                    <td>
+                        <input id = "opt2" type="radio" value = "2" formControlName="trabajoEnPista">
+                    </td>
+                    <td>
+                        <li>Se trabajó piso.</li>
+                        <li>El caballo realizó un esfuerzo físico.</li>
+                        <li>No se saltó algo mayor a cruces o barras.</li>
+                        <li>Se aplicará cuidado post-entrenamiento (indicado por veterinario)</li>
+                    </td>
+                </tr>
+            </table>
+        </label>
+    </div>
+    <div class="contForm">
+        <label for="opt3">
+            <table>
+                <tr>
+                    <td>
+                        <input id = "opt3" type="radio" value="3" formControlName="trabajoEnPista">
+                    </td>
+                    <td>
+                        <li>Se realizó trabajo pesado.</li>
+                        <li>El caballo saltó de manera repetida saltos mayores a 70 cm.</li>
+                        <li>Se requiere cuidado post-entrenamiento (indicado por veterinario).</li>
+                    </td>
+                </tr>
+            </table>
+        </label>
+    </div>
+    <div class="contForm">
+        <label class= "dateLabel" for="">Persona que montó:</label>
+        <input type="text" formControlName = "jinete">
+    </div>
+    <div class="contForm">
+        <label for="">Observaciones:</label>
+        <div>
+            <textarea name="" id="" cols="30" rows="10" formControlName="observaciones"></textarea>
+        </div>
+    </div>
+    <div>
+        <button class="btnForm" type="submit"[disabled]="!formPista.valid">Registrar</button>
+    </div>
+</form>

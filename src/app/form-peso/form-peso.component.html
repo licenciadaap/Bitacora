@@ -1,0 +1,18 @@
+<a href="/forms/{{idHorse}}/{{nameHorse}}">Forms</a>
+<h1>Peso - {{nameHorse}}</h1>
+<form [formGroup]="formPeso" (ngSubmit)="onSubmit()">
+    <div class="contForm">
+        <label for="dateLabel">Peso del Caballo: 
+            <input type="text" formControlName = "peso">
+            Kg.
+        </label>
+        
+    </div>
+    <div class="contForm">
+        <label class="dateLabel" for="">Fecha de Peso: </label>
+        <input type="date" formControlName = "fechaPeso">
+    </div>
+    <div>
+        <button class="btnForm" type="submit" [disabled]="!formPeso.valid">Registrar</button>
+    </div>
+</form>

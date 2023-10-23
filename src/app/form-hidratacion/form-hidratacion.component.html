@@ -1,0 +1,25 @@
+<a href="/forms/{{idHorse}}/{{nameHorse}}">Forms</a>
+<h1>Hidratación - {{nameHorse}}</h1>
+<form [formGroup]="formHidra" (ngSubmit)="onSubmit()">
+    <div class="contForm">
+        <label class="dateLabel" for="">Fecha:</label>
+        <input type="date" formControlName = "fecha">
+    </div>
+    <div class="contForm">
+        <h2>Cubeta 1</h2>
+        <label class="dateLabel" for="">
+            <input class = "dateLabel" type="text" formControlName = "litrosCubeta1">
+             Litros Sobrantes
+        </label>
+    </div>
+    <div class="contForm">
+        <h2>Cubeta 2</h2>
+        <label class = "dateLabel" for="">
+            <input class="dateLabel" type="text" formControlName = "litrosCubeta2">
+             Litros Sobrantes
+        </label>
+    </div>
+    <div class="contForm">
+        <button class="btnForm" type="submit" [disabled]="!formHidra.valid">Registrar</button>
+    </div>
+</form>

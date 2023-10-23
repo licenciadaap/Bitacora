@@ -1,0 +1,29 @@
+<a href="/forms/{{idHorse}}/{{nameHorse}}">Forms</a>
+<h1>Veterinario - {{nameHorse}}</h1>
+<form [formGroup]="formVet" (ngSubmit)="onSubmit()">
+    <div class="contForm">
+        <label class = "dateLabel" for="fvv">Fecha de visita del veterinario:</label>
+        <input type="date" formControlName = "fechaVisitaVet" id = "fvv">
+    </div>
+    <div class="contForm">
+        <label for="rv">Razón por la que se llamó al veterinario:</label>
+        <div>
+            <textarea formControlName="razonVet" id="rv" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    <div class="contForm">
+        <label for="diag">Diagnóstico de veterinario:</label>
+        <div>
+            <textarea formControlName="diagnostico" id="diag" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    <div class="contForm">
+        <label for="trat">Tratamiento:</label>
+        <div>
+            <textarea formControlName="tratamiento" id="trat" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    <div class="contForm">
+        <button class="btnForm" type="submit" [disabled]="!formVet.valid">Registrar</button>
+    </div>
+</form>

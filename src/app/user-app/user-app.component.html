@@ -1,0 +1,37 @@
+<div class="col-12">
+    <div *ngIf="renderZero" class="tipo1">
+        <div class="header">
+            <h1 class="title">Mis Caballos</h1>
+        </div>
+        <div class="wrapper">
+            <img src="/assets/herradura.png" alt="">
+            <div class="message1">
+                <p>No tienes caballos registrados.</p>
+            </div>
+            <div class="message2">
+                <p>Registra caballos para poder recopilar información.</p>
+            </div>
+            <div class="btn-msg">
+                <button class="registro" (click)="redirectRg()">Registrar</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!renderZero" class="tipo2">
+        <div class="header">
+            <h1 class="title">Mis Caballos</h1>
+        </div>
+        <div class="wrapper">
+            <nav>
+                <a *ngFor="let horse of horses" href = "horse/{{horse.id}}/{{horse.name}}">
+                    <div class="card">
+                        <img src="/assets/horselogo.png" alt="alter">
+                        <p>{{horse.name}}</p>
+                    </div>
+                </a>
+            </nav>
+            <div class="btn-msg">
+                <button class="registro" (click)="redirectRg()">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>

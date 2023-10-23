@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Resultados</h2>
+<mat-dialog-content>
+    <table *ngIf="data.tipo_competencia === 1">
+        <tr>
+            <th>Altura</th>
+            <th>Modalidad</th>
+            <th>Puntos Malos</th>
+            <th>Tiempo</th>
+            <th>Lugar Obtenido</th>
+        </tr>
+        <tr>
+            <td>{{data.altura}}</td>
+            <td>{{data.modalidad}}</td>
+            <td>{{data.puntosMalos}}</td>
+            <td>{{data.tiempo}}</td>
+            <td>{{data.lugar}} º</td>
+        </tr>
+    </table>
+    <table *ngIf="data.tipo_competencia === 2">
+        <tr>
+            <th>Categoria</th>
+            <th>Puntuacion</th>
+            <th>Juez</th>
+        </tr>
+        <tr>
+            <td>{{data.categoria}}</td>
+            <td>{{data.puntuacion}}</td>
+            <td>{{data.juez}}</td>
+        </tr>
+    </table>
+    <h2 *ngIf="data.tipo_competencia !== 1 && data.tipo_competencia !== 2">Información no disponible</h2>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="btnForm" mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

@@ -1,0 +1,68 @@
+<a href="/forms/{{idHorse}}/{{nameHorse}}">Forms</a>
+<h1>Resultados - {{nameHorse}}</h1>
+<form [formGroup] ="formResultados" (ngSubmit)="onSubmit()">
+    <div class="contForm">
+        <label class="dateLabel" >Sede:</label>
+        <input type="text" formControlName = "sedeCompetencia">
+    </div>
+    <div class="contForm">
+        <label class="dateLabel" >Fecha de competencia:</label>
+        <input type="date" formControlName = "fechaCompetencia">
+    </div>
+    <div class="contForm">
+        <label class="dateLabel" >Tipo de competencia:</label>
+        <select (change)="validator()" formControlName="tipoCompetencia" name="competencia" id="comp" size="1" required>
+            <option *ngFor = "let element of competencias" [value] = "element.id">{{element.description}}</option>
+        </select>
+    </div>
+    <section formGroupName = "saltoForm" *ngIf="this.formResultados.value.tipoCompetencia === '1'" class="CompetenciaSalto">
+        <div class="contForm">
+            <label class="dateLabel" >Altura:</label>
+            <select formControlName = "altura">
+                <option *ngFor = "let element of alturas" [value] = "element.id">{{element.description}}</option>
+            </select>
+        </div>
+        <div class="contForm">
+            <label class="dateLabel" >Modalidad:</label>
+            <select formControlName = "modalidad">
+                <option *ngFor = "let element of modalidades" [value]="element.id">{{element.description}}</option>
+            </select>
+        </div>
+        <div class="contForm">
+            <label class="dateLabel" for="">Puntos Malos:</label>
+            <input type="number" formControlName = "puntosMalos">
+        </div>
+        <div class="contForm">
+            <label class="dateLabel" for="">Tiempo:</label>
+            <input type= "text" formControlName = "tiempo">
+        </div>
+        <div class="contForm">
+            <label class="dateLabel" for="">Lugar Obtenido:</label>
+            <input type="number" formControlName = "lugar">
+        </div>
+    </section>
+    <section formGroupName = "adiestramientoForm" class="CompetenciaAdiestramiento" *ngIf="this.formResultados.value.tipoCompetencia === '2'">
+        <div class="contForm">
+            <label class="dateLabel" for="">Categoría:</label>
+            <input type="text" formControlName = "categoria">
+        </div>
+        <div class="contForm">
+            <label class="dateLabel" for="">Puntuación:</label>
+            <input type="text" formControlName = "puntuacion">
+        </div>
+        <div class="contForm">
+            <label class="dateLabel" for="">Juez:</label>
+            <input type="text" formControlName = "juez">
+        </div>
+    </section>
+    <div class="contForm">
+        <label>Observaciones:</label>
+        <div>
+            <textarea name="" id="" cols="30" rows="10" formControlName = "observaciones"></textarea>
+        </div>
+    </div>
+    <div>
+        <button class="btnForm" type="submit" [disabled]="!formResultados.valid">Registrar</button>
+    </div>
+
+</form>
